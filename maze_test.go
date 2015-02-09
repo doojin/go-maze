@@ -1,6 +1,7 @@
 package maze
 
 import (
+	"errors"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -8,17 +9,14 @@ import (
 
 // New
 
-func TestMazeRowCountShouldBeEqualToMazeHeightArgument(t *testing.T) {
-	maze := New(3, 4)
+func TestIfWidthIsSmallerThanOneShouldReturnError(t *testing.T) {
+	_, err := New(0, 4)
 
-	assert.Equal(t, 4, len(maze.Rows))
+	assert.Equal(t, errors.New("Width cannot be smaller than 1"), err)
 }
 
-func TestMazeRowsShouldHaveCellCountEqualToMazeWidthArgument(t *testing.T) {
-	maze := New(3, 4)
+func TestIfHeightIsSmallerThanOneShouldReturnError(t *testing.T) {
+	_, err := New(4, 0)
 
-	assert.Equal(t, 3, len(maze.Rows[0].Cells))
-	assert.Equal(t, 3, len(maze.Rows[1].Cells))
-	assert.Equal(t, 3, len(maze.Rows[2].Cells))
-	assert.Equal(t, 3, len(maze.Rows[3].Cells))
+	assert.Equal(t, errors.New("Height cannot be smaller than 1"), err)
 }
