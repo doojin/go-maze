@@ -9,7 +9,7 @@ type Row struct {
 func NewRow(size int) Row {
 	row := Row{}
 	for i := 0; i < size; i++ {
-		row.Cells = append(row.Cells, NewCell(i))
+		row.Cells = append(row.Cells, NewCell())
 	}
 	row.Cells[0].BorderLeft = true
 	row.Cells[size-1].BorderRight = true

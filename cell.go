@@ -10,7 +10,7 @@ type Cell struct {
 }
 
 // NewCell returns new cell
-func NewCell(group int) Cell {
-	cell := Cell{false, false, false, false, group}
+func NewCell() Cell {
+	cell := Cell{false, false, false, false, 0}
 	return cell
 }

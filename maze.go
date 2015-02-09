@@ -21,3 +21,8 @@ func New(width int, height int) (maze Maze, err error) {
 	}
 	return maze, err
 }
+
+// Generate generates a random maze
+func (maze *Maze) Generate() {
+
+}
