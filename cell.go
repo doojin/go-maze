@@ -8,3 +8,9 @@ type Cell struct {
 	BorderBottom bool
 	Group        int
 }
+
+// NewCell returns new cell
+func NewCell(group int) Cell {
+	cell := Cell{false, false, false, false, group}
+	return cell
+}
