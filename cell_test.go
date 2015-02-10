@@ -15,5 +15,5 @@ func TestShouldReturnCellWithDefaultValues(t *testing.T) {
 	assert.Equal(t, cell.BorderTop, false)
 	assert.Equal(t, cell.BorderRight, false)
 	assert.Equal(t, cell.BorderBottom, false)
-	assert.Equal(t, cell.Group, 0)
+	assert.Equal(t, cell.Group, -1)
 }

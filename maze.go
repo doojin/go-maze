@@ -1,6 +1,9 @@
 package maze
 
-import "errors"
+import (
+	"errors"
+	"fmt"
+)
 
 // Maze consists of rows
 type Maze struct {
@@ -24,5 +27,25 @@ func New(width int, height int) (maze Maze, err error) {
 
 // Generate generates a random maze
 func (maze *Maze) Generate() {
+	// Generating first row
+	row := NewRow(maze.width)
+	row.SetGroups(0)
+	row.CreateRightBorders()
+	row.CreateBottomBorders()
+	maze.Rows = append(maze.Rows, row)
 
+	// Generating other rows
+	for i := 1; i < maze.height; i++ {
+		nextRow := maze.Rows[i-1].Copy()
+		nextRow.RemoveRightBorders()
+		nextRow.RemoveGroupsAndBottomBordersIfNeed()
+		nextRow.SetGroups(i * maze.width)
+		nextRow.CreateRightBorders()
+		nextRow.CreateBottomBorders()
+		maze.Rows = append(maze.Rows, nextRow)
+	}
+
+	maze.Rows[len(maze.Rows)-1].SetBorderBottom()
+	row.SetBorderTop()
+	fmt.Println(maze)
 }

@@ -11,6 +11,17 @@ type Cell struct {
 
 // NewCell returns new cell
 func NewCell() Cell {
-	cell := Cell{false, false, false, false, 0}
+	cell := Cell{false, false, false, false, -1}
 	return cell
+}
+
+// Copy returns copy of cell
+func (cell Cell) Copy() Cell {
+	copy := Cell{}
+	copy.BorderLeft = cell.BorderLeft
+	copy.BorderTop = cell.BorderTop
+	copy.BorderRight = cell.BorderRight
+	copy.BorderBottom = cell.BorderBottom
+	copy.Group = cell.Group
+	return copy
 }
